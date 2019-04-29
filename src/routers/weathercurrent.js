@@ -1,16 +1,30 @@
 const express=require('express');
-const axios=require('axios');
+const axios=require('../axios');
+const Weather=require("../model/Weather");
 const router=express.Router();
-
-router.get('/:city/:country',(req,res)=>{
-    const {city,country}=req.params;
-    axios.get(
-        `http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=70524de0cb2bf075bed8d2716ac3d222&units=metric`
-    ).then(Response=>{
-         res.send(Response.data);
+router.get('/:city',(req,res)=>{
+    const {city}=req.params;
+    // axios.get(
+    //     `/weather?q=${city},${country}`
+    // ).then(Response=>{
+    //      res.send(Response.data);
+    // }).catch(err=>{
+    //     res.send(err);
+    // })
+    // axios.get(
+    //     `/forecast?q=${city},${country}&cnt=5`
+    // ).then(Response=>{
+    //     // 取时间
+    //     //  res.send(Response.data.list[0].dt_txt.split(" ")[1]);
+    //     res.send(Response.data);
+    // }).catch(err=>{
+    //     res.send(err);
+    // })
+    Weather.getdata(city).then(Response=>{
+         res.send(Response);
     }).catch(err=>{
         res.send(err);
     })
-   
+    
 })
 module.exports=router;
