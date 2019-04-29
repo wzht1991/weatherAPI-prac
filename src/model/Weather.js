@@ -9,6 +9,7 @@ class Weather{
           const forcast=data[1].data;
           const weather={
               currentWeather: new Current(current),
+            //   这里调取了forcast 下面的list
               ForcastWeather: forcast.list.map(i=>new Forcast(i)) 
           }
           return weather;
