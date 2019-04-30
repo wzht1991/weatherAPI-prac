@@ -4,9 +4,13 @@ class Forcast extends Current {
     constructor(rawData){
         // 调用继承都需要用super 来调用父类
         super(rawData)
+        const {main}=rawData;
         this.time=rawData.dt_txt.split(" ")[1];
+        this.temp_max_C=main.temp_max;
+        this.temp_min_C=main.temp_min;
+        this.temp_max_F=this.CalculateFahrenheit(main.temp_max);
+        this.temp_min_F=this.CalculateFahrenheit(main.temp_min);
     }
-   
 }
 
 module.exports=Forcast;

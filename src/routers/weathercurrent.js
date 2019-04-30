@@ -12,7 +12,7 @@ router.get('/:city',(req,res)=>{
     //     res.send(err);
     // })
     // axios.get(
-    //     `/forecast?q=${city},${country}&cnt=5`
+    //     `/forecast?q=${city}&cnt=5`
     // ).then(Response=>{
     //     // 取时间
     //     //  res.send(Response.data.list[0].dt_txt.split(" ")[1]);
